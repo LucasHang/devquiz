@@ -23,9 +23,9 @@ class ScoreCardWidget extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: AppColors.lightGrey,
-              blurRadius: 4,
+              blurRadius: 6,
               offset: Offset.fromDirection(1.6, 2.0),
-              spreadRadius: 0
+              spreadRadius: -3
             )
           ]
         ),

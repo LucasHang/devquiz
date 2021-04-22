@@ -16,7 +16,7 @@ class AppBarWidget extends PreferredSize {
             decoration: BoxDecoration(
               gradient: AppGradients.linear
             ),
-            padding: const EdgeInsets.only(left: 20, right: 20, bottom: 15),
+            padding: const EdgeInsets.only(left: 20, right: 20, bottom: 18),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -49,7 +49,7 @@ class AppBarWidget extends PreferredSize {
           ),
 
           Align(
-            alignment: Alignment(0.0, 1.1),
+            alignment: Alignment(0.0, 1.0),
             child: ScoreCardWidget(),
           )
         ]
