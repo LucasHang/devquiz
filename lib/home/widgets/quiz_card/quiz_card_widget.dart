@@ -1,4 +1,5 @@
 import 'package:devquiz/core/app_colors.dart';
+import 'package:devquiz/core/app_decorations.dart';
 import 'package:devquiz/core/app_images.dart';
 import 'package:devquiz/core/app_text_styles.dart';
 import 'package:devquiz/shared/widgets/progress_indicator/progress_indicator_widget.dart';
@@ -11,19 +12,7 @@ class QuizCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        border: Border.fromBorderSide(BorderSide(color: AppColors.border)),
-        borderRadius: BorderRadius.circular(10),
-        color: AppColors.white,
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.border,
-            blurRadius: 6,
-            offset: Offset.fromDirection(1.6, 2.0),
-            spreadRadius: -2
-          )
-        ],
-      ),
+      decoration: AppDecorations.card,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -1,4 +1,5 @@
 import 'package:devquiz/core/app_colors.dart';
+import 'package:devquiz/core/app_decorations.dart';
 import 'package:devquiz/core/app_text_styles.dart';
 import 'package:devquiz/home/widgets/chart/chart_widget.dart';
 import 'package:flutter/material.dart';
@@ -14,21 +15,7 @@ class ScoreCardWidget extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(18),
         height: 136,
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(15),
-          border: Border.all(
-            color: AppColors.border
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.border,
-              blurRadius: 6,
-              offset: Offset.fromDirection(1.6, 2.0),
-              spreadRadius: -2
-            )
-          ]
-        ),
+        decoration: AppDecorations.card,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
