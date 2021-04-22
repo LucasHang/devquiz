@@ -10,22 +10,22 @@ class ScoreCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return 
     Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 18),
       child: Container(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(18),
         height: 136,
         decoration: BoxDecoration(
           color: AppColors.white,
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
-            color: AppColors.lightGrey
+            color: AppColors.border
           ),
           boxShadow: [
             BoxShadow(
-              color: AppColors.lightGrey,
+              color: AppColors.border,
               blurRadius: 6,
               offset: Offset.fromDirection(1.6, 2.0),
-              spreadRadius: -3
+              spreadRadius: -2
             )
           ]
         ),
@@ -39,7 +39,7 @@ class ScoreCardWidget extends StatelessWidget {
             Expanded(
               flex: 3,
               child: Padding(
-                padding: const EdgeInsets.only(left: 24),
+                padding: const EdgeInsets.only(left: 22),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
