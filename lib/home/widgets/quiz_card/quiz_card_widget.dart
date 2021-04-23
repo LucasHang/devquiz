@@ -1,4 +1,3 @@
-import 'package:devquiz/core/app_colors.dart';
 import 'package:devquiz/core/app_decorations.dart';
 import 'package:devquiz/core/app_images.dart';
 import 'package:devquiz/core/app_text_styles.dart';
