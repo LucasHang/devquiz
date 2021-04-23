@@ -5,7 +5,16 @@ import 'package:devquiz/shared/widgets/progress_indicator/progress_indicator_wid
 import 'package:flutter/material.dart';
 
 class QuizCardWidget extends StatelessWidget {
-  const QuizCardWidget({Key? key}) : super(key: key);
+  final String title;
+  final int questionsQuantity;
+  final int questionAnsweredQuantity;
+
+  const QuizCardWidget({
+    Key? key, 
+    required this.title,
+    required this.questionsQuantity,
+    this.questionAnsweredQuantity = 0,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +22,7 @@ class QuizCardWidget extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       decoration: AppDecorations.card,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
@@ -22,17 +32,29 @@ class QuizCardWidget extends StatelessWidget {
           ),
           SizedBox(height: 16,),
           Text(
-            "Gerenciamento de estado", 
+            title, 
             style: AppTextStyles.heading15
           ),
           SizedBox(height: 9,),
-          Text(
-            "3 de 10", 
-            style: AppTextStyles.body11
-          ),
-          SizedBox(height: 2,),
-          ProgressIndicatorWidget(
-            value: 0.3,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "$questionAnsweredQuantity de $questionsQuantity", 
+                style: AppTextStyles.body11
+              ),
+              SizedBox(height: 2,),
+              Container(
+                height: 5,
+                child: ProgressIndicatorWidget(
+                  value: (questionAnsweredQuantity/questionsQuantity),
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(1.5),
+                ),
+                clipBehavior: Clip.hardEdge,
+              ),
+            ],
           ),
         ],
       ),
