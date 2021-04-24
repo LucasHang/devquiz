@@ -62,13 +62,15 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.symmetric(horizontal: 18),
               children: controller.quizzes!.map((e) => QuizCardWidget(
                 title: e.title,
-                questionsQuantity: e.questions.length,
-                questionAnsweredQuantity: e.questionAnswered,
+                questionsLength: e.questions.length,
+                questionsAnsweredLength: e.questionsAnswered,
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ChallengePage(),
+                      builder: (context) => ChallengePage(
+                        questions: e.questions,
+                      ),
                     )
                   );
                 },

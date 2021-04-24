@@ -53,7 +53,7 @@ class NextButtonWidget extends StatelessWidget {
             )
           ),
         ),
-        onPressed: () {},
+        onPressed: onTap,
         child: Text(
           label,
           style: GoogleFonts.notoSans(

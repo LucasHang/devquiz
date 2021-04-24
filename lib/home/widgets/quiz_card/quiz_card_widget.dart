@@ -7,15 +7,15 @@ import 'package:flutter/material.dart';
 
 class QuizCardWidget extends StatelessWidget {
   final String title;
-  final int questionsQuantity;
-  final int questionAnsweredQuantity;
+  final int questionsLength;
+  final int questionsAnsweredLength;
   final VoidCallback onTap;
 
   const QuizCardWidget({
     Key? key, 
     required this.title,
-    required this.questionsQuantity,
-    this.questionAnsweredQuantity = 0,
+    required this.questionsLength,
+    this.questionsAnsweredLength = 0,
     required this.onTap,
   }) : super(key: key);
 
@@ -42,14 +42,14 @@ class QuizCardWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "$questionAnsweredQuantity de $questionsQuantity", 
+                "$questionsAnsweredLength de $questionsLength", 
                 style: AppTextStyles.body11
               ),
               SizedBox(height: 2,),
               Container(
                 height: 5,
                 child: ProgressIndicatorWidget(
-                  value: (questionAnsweredQuantity/questionsQuantity),
+                  value: (questionsAnsweredLength/questionsLength),
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(1.5),
