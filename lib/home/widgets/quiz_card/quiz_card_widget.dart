@@ -1,3 +1,4 @@
+import 'package:devquiz/core/app_colors.dart';
 import 'package:devquiz/core/app_decorations.dart';
 import 'package:devquiz/core/app_images.dart';
 import 'package:devquiz/core/app_text_styles.dart';
@@ -8,19 +9,20 @@ class QuizCardWidget extends StatelessWidget {
   final String title;
   final int questionsQuantity;
   final int questionAnsweredQuantity;
+  final VoidCallback onTap;
 
   const QuizCardWidget({
     Key? key, 
     required this.title,
     required this.questionsQuantity,
     this.questionAnsweredQuantity = 0,
+    required this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(14),
-      decoration: AppDecorations.card,
+    return ElevatedButton(
+      onPressed: onTap,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,6 +59,16 @@ class QuizCardWidget extends StatelessWidget {
             ],
           ),
         ],
+      ),
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(AppColors.white),
+        padding: MaterialStateProperty.all(EdgeInsets.all(14)),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            side: BorderSide(color: AppColors.border),
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
       ),
     );
   }

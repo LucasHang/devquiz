@@ -1,3 +1,4 @@
+import 'package:devquiz/challenge/challenge_page.dart';
 import 'package:devquiz/core/app_colors.dart';
 import 'package:devquiz/home/home_controller.dart';
 import 'package:devquiz/home/home_state.dart';
@@ -31,14 +32,14 @@ class _HomePageState extends State<HomePage> {
     if( controller.state == HomeState.succes ){
       return Scaffold(
       appBar: AppBarWidget(user: controller.user!,),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 14,
-            ),
-            Wrap(
+      body: Column(
+        children: [
+          SizedBox(
+            height: 14,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18),
+            child: Wrap(
               alignment: WrapAlignment.center,
               runSpacing: 6,
               spacing: 6,
@@ -49,23 +50,32 @@ class _HomePageState extends State<HomePage> {
                 LevelButtonWidget(label: "Perito",),
               ],
             ),
-            SizedBox(
-              height: 14,
+          ),
+          SizedBox(
+            height: 14,
+          ),
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 2,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              padding: const EdgeInsets.symmetric(horizontal: 18),
+              children: controller.quizzes!.map((e) => QuizCardWidget(
+                title: e.title,
+                questionsQuantity: e.questions.length,
+                questionAnsweredQuantity: e.questionAnswered,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ChallengePage(),
+                    )
+                  );
+                },
+              )).toList(),
             ),
-            Expanded(
-              child: GridView.count(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                children: controller.quizzes!.map((e) => QuizCardWidget(
-                  title: e.title,
-                  questionsQuantity: e.questions.length,
-                  questionAnsweredQuantity: e.questionAnswered,
-                )).toList(),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
     }else{
