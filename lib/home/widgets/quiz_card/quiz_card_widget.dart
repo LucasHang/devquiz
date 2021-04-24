@@ -23,6 +23,17 @@ class QuizCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onTap,
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(AppColors.white),
+        padding: MaterialStateProperty.all(EdgeInsets.all(14)),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            side: BorderSide(color: AppColors.border),
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+        shadowColor: MaterialStateProperty.all(AppColors.border),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,16 +70,6 @@ class QuizCardWidget extends StatelessWidget {
             ],
           ),
         ],
-      ),
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(AppColors.white),
-        padding: MaterialStateProperty.all(EdgeInsets.all(14)),
-        shape: MaterialStateProperty.all(
-          RoundedRectangleBorder(
-            side: BorderSide(color: AppColors.border),
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
       ),
     );
   }
