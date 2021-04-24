@@ -52,34 +52,59 @@ class _ChallengePageState extends State<ChallengePage> {
         physics: NeverScrollableScrollPhysics(),
         controller: pageController,
         onPageChanged: controller.onPageChanged,
-        children: widget.questions.map((e) => QuizWidget(question: e,)).toList(),
+        children: widget.questions.map((e) {
+          return ValueListenableBuilder<bool>(
+            valueListenable: controller.isConfirmedNotifier, 
+            builder: (context, value, _) => QuizWidget(question: e, isConfirmed: value,)
+          );
+        }).toList(),
       ),
       bottomNavigationBar: SafeArea(
         bottom: true,
         child: Padding(
           padding: const EdgeInsets.all(20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(
-                child: NextButtonWidget.white(
-                  label: "Pular",
-                  onTap: () {
-                    pageController.nextPage(
-                      duration: Duration(milliseconds: 300), 
-                      curve: Curves.linear,
-                    );
-                  }
-                ),
-              ),
-              SizedBox(width: 8,),
-              Expanded(
-                child: NextButtonWidget.darkGreen(
-                  label: "Confirmar",
-                  onTap: () {},
-                ),
-              ),
-            ],
+          child: ValueListenableBuilder<int>(
+            valueListenable: controller.currentQuestionNotifier, 
+            builder: (context, value, _) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  if( value < widget.questions.length )
+                    Expanded(
+                      child: NextButtonWidget.white(
+                        label: "Pular",
+                        onTap: () {
+                          pageController.nextPage(
+                            duration: Duration(milliseconds: 250), 
+                            curve: Curves.linear,
+                          );
+                        }
+                      )
+                    ),
+
+                  if( value < widget.questions.length )
+                    SizedBox(width: 8,),
+
+                  Expanded(
+                    child: NextButtonWidget.darkGreen(
+                      label: "Confirmar",
+                      onTap: () {
+                        controller.isConfirmed = true;
+                        Future.delayed(Duration(seconds: 1))
+                          .then((_) {
+                            if( value == widget.questions.length ) return Navigator.pop(context);
+
+                            pageController.nextPage(
+                              duration: Duration(milliseconds: 250), 
+                              curve: Curves.linear,
+                            ).then((_) => controller.isConfirmed = false);
+                          });
+                      }
+                    ),
+                  ),
+                ],
+              );
+            } 
           ),
         ),
       ),
