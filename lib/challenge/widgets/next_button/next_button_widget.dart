@@ -7,7 +7,6 @@ class NextButtonWidget extends StatelessWidget {
   final Color backgroundColor;
   final Color fontColor;
   final Color borderColor;
-  final Color overlayColor;
   final VoidCallback onTap;
 
   NextButtonWidget({
@@ -16,7 +15,6 @@ class NextButtonWidget extends StatelessWidget {
     required this.backgroundColor,
     required this.fontColor,
     required this.borderColor,
-    required this.overlayColor,
     required this.onTap,
   }) : super(key: key);
 
@@ -25,7 +23,6 @@ class NextButtonWidget extends StatelessWidget {
       this.backgroundColor = AppColors.darkGreen,
       this.fontColor = AppColors.white,
       this.borderColor = AppColors.green,
-      this.overlayColor = AppColors.darkerGreen,
       this.onTap = onTap;
 
   NextButtonWidget.white({required String label, required VoidCallback onTap})
@@ -33,7 +30,13 @@ class NextButtonWidget extends StatelessWidget {
       this.backgroundColor = AppColors.white,
       this.fontColor = AppColors.grey,
       this.borderColor = AppColors.border,
-      this.overlayColor = AppColors.lighterGrey,
+      this.onTap = onTap;
+
+  NextButtonWidget.purple({required String label, required VoidCallback onTap})
+    : this.label = label,
+      this.backgroundColor = AppColors.purple,
+      this.fontColor = AppColors.white,
+      this.borderColor = AppColors.lightPurple,
       this.onTap = onTap;
 
   @override
@@ -42,7 +45,7 @@ class NextButtonWidget extends StatelessWidget {
       height: 48,
       child: TextButton(
         style: ButtonStyle(
-          overlayColor: MaterialStateProperty.all(overlayColor),
+          overlayColor: MaterialStateProperty.all(AppColors.overlay),
           backgroundColor: MaterialStateProperty.all(backgroundColor),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(

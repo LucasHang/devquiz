@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   static final Color white = Color(0xFFFFFFFF);
   static final Color black = Color(0xFF514766);
+  static final Color overlay = Color.fromRGBO(0, 0, 0, 0.1);
 
   //Purples
   static final Color purple = Color(0xFF8257E5);

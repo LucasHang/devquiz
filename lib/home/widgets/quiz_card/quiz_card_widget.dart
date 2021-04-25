@@ -1,5 +1,4 @@
 import 'package:devquiz/core/app_colors.dart';
-import 'package:devquiz/core/app_decorations.dart';
 import 'package:devquiz/core/app_images.dart';
 import 'package:devquiz/core/app_text_styles.dart';
 import 'package:devquiz/shared/widgets/progress_indicator/progress_indicator_widget.dart';
@@ -9,6 +8,7 @@ class QuizCardWidget extends StatelessWidget {
   final String title;
   final int questionsLength;
   final int questionsAnsweredLength;
+  final String imageName;
   final VoidCallback onTap;
 
   const QuizCardWidget({
@@ -16,6 +16,7 @@ class QuizCardWidget extends StatelessWidget {
     required this.title,
     required this.questionsLength,
     this.questionsAnsweredLength = 0,
+    required this.imageName,
     required this.onTap,
   }) : super(key: key);
 
@@ -33,6 +34,7 @@ class QuizCardWidget extends StatelessWidget {
           ),
         ),
         shadowColor: MaterialStateProperty.all(AppColors.border),
+        overlayColor: MaterialStateProperty.all(AppColors.overlay),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -41,7 +43,7 @@ class QuizCardWidget extends StatelessWidget {
           Container(
             width: 40,
             height: 40,
-            child: Image.asset(AppImages.blocks),
+            child: Image.asset(AppImages.fromName(imageName)),
           ),
           SizedBox(height: 16,),
           Text(

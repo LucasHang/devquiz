@@ -7,7 +7,7 @@ class AnswerWidget extends StatelessWidget {
   final AnswerModel answer;
   final bool isSelected;
   final bool isConfirmed;
-  final VoidCallback onTap;
+  final ValueChanged<bool> onTap;
 
   const AnswerWidget({
     Key? key, 
@@ -52,7 +52,7 @@ class AnswerWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: ElevatedButton(
-          onPressed: onTap,
+          onPressed: () => onTap(answer.isRight),
           style: ButtonStyle(
             padding: MaterialStateProperty.all(EdgeInsets.all(16)),
             backgroundColor: MaterialStateProperty.all(isSelected ? _selectedColorCardRight : AppColors.white),
@@ -65,7 +65,7 @@ class AnswerWidget extends StatelessWidget {
               ),
             ),
             shadowColor: MaterialStateProperty.all(AppColors.border),
-            overlayColor: MaterialStateProperty.all(AppColors.moreLighterGrey),
+            overlayColor: MaterialStateProperty.all(AppColors.overlay),
           ),
           child: Row(
             children: [
