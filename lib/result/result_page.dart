@@ -2,6 +2,7 @@ import 'package:devquiz/challenge/widgets/next_button/next_button_widget.dart';
 import 'package:devquiz/core/app_images.dart';
 import 'package:devquiz/core/app_text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ResultPage extends StatelessWidget {
   final String title;
@@ -49,7 +50,7 @@ class ResultPage extends StatelessWidget {
                 children: [
                   NextButtonWidget.purple(
                     label: 'Compartilhar',
-                    onTap: () {},
+                    onTap: () => Share.share('Obtive ${((rightAnswersLength/questionsLength)*100).round()}% de acerto no quiz "$title"'),
                   ),
                   SizedBox(
                     height: 10,
