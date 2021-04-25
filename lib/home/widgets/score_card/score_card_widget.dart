@@ -22,7 +22,7 @@ class ScoreCardWidget extends StatelessWidget {
           children: [
             Expanded(
               flex: 1,
-              child: ChartWidget(value: score,)
+              child: ChartWidget(value: (score/100),)
             ),
             Expanded(
               flex: 3,
